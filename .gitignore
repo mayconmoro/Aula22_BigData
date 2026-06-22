@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Tipos de base de dados
+*.csv
+*.xls
+*.xlsx
+
+# Tipo de arquivo de visualização
+*.pdf
+
+# Editor de texto
+*.docx
