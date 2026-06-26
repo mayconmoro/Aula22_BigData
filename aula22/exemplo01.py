@@ -239,7 +239,7 @@ try:
     # Entre 10% e 25% -> Dispersão moderada em relação a média,
     # Acima de 25% -> Alta dispersão em relação a média,
     
-    distancia_var_media = (variancia / (media_roubo_veiculo ** 2)) *100
+    distancia_var_media = (variancia / (media_roubo_veiculo ** 2))
 
     # Desvio Padrão
     # É a raiz quadrada da variância.
@@ -251,14 +251,14 @@ try:
     # Coeficiente de Variação
     # É a magnitude(mensuração) do desvio padrão em relação a média
 
-    coeficiente_variacao = desvio_padrao / media_roubo_veiculo * 100
+    coeficiente_variacao = desvio_padrao / media_roubo_veiculo 
 
     print('\nMedidas de Variabilidade: ')
     print(50 * '=')
     print(f'Variância: {variancia:.2f}')
-    print(f'Distância entre Variância e a Média: {distancia_var_media:.2f}%') 
+    print(f'Distância entre Variância e a Média: {distancia_var_media:.2%}') 
     print(f'Desvio Padrão: {desvio_padrao:.2f}') 
-    print(f'Coeficiente de Variação: {coeficiente_variacao:.2f}%') 
+    print(f'Coeficiente de Variação: {coeficiente_variacao:.2%}') 
         
 except Exception as e:
     print(f'Erro ao calcular as medidas de variabilidade: {e}')
@@ -324,9 +324,21 @@ try:
 
     # POSIÇÃO 4 - HISTOGRAMA
     plt.subplot(2, 2, 4)
-    plt.hist(array_roubo_veiculo, bins=100) # bins são intervalos (quantidade de 100 intervalos no histograma)
-    plt.axvline(media_roubo_veiculo, color='green', linewidth=1)
-    plt.axvline(mediana_roubo_veiculo, color='orange', linewidth=1)
+    plt.hist(array_roubo_veiculo, bins=390) # bins são intervalos (quantidade de 100 intervalos no histograma)
+    plt.axvline(media_roubo_veiculo, color='green', linewidth=1, label='Média')
+    plt.axvline(mediana_roubo_veiculo, color='orange', linewidth=1, label ='Mediana')
+    plt.legend() # legenda...
+
+    contagens, limites = np.histogram(array_roubo_veiculo, bins=390)
+
+    print('\nFaixas do Histograma')
+    for i in range(len(contagens)):
+        if contagens[i] > 0:
+            print(
+                f'Faixa {i+1} - '
+                f'{limites [i]:.0f} até {limites [i+1]:.0f} roubos'
+                f'=> {contagens [i]} Municípios'
+            )
 
     plt.title('Medidas de Distribuição')
 

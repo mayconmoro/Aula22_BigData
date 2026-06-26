@@ -20,7 +20,7 @@ try:
     df_ocorrencias = df_ocorrencias[df_ocorrencias['ano'].isin([2025, 2026])]
 
     # Por região: Baixada Fluminense
-    df_ocorrencias = df_ocorrencias[df_ocorrencias['regiao'] == 'Baixada Fluminense']
+    df_ocorrencias = df_ocorrencias[df_ocorrencias['regiao'] == 'Interior']
     
     # conferencia dos dados obtidos
     #print(df_ocorrencias.head())
@@ -236,7 +236,7 @@ try:
     # Entre 10% e 25% -> Dispersão moderada em relação a média,
     # Acima de 25% -> Alta dispersão em relação a média,
     
-    distancia_var_media = (variancia / (media_roubo_veiculo ** 2)) *100
+    distancia_var_media = (variancia / (media_roubo_veiculo ** 2))
 
     # Desvio Padrão
     # É a raiz quadrada da variância.
@@ -248,14 +248,14 @@ try:
     # Coeficiente de Variação
     # É a magnitude(mensuração) do desvio padrão em relação a média
 
-    coeficiente_variacao = desvio_padrao / media_roubo_veiculo * 100
+    coeficiente_variacao = desvio_padrao / media_roubo_veiculo
 
     print('\nMedidas de Variabilidade: ')
     print(50 * '=')
     print(f'Variância: {variancia:.2f}')
-    print(f'Distância entre Variância e a Média: {distancia_var_media:.2f}%') 
+    print(f'Distância entre Variância e a Média: {distancia_var_media:.2%}') 
     print(f'Desvio Padrão: {desvio_padrao:.2f}') 
-    print(f'Coeficiente de Variação: {coeficiente_variacao:.2f}%') 
+    print(f'Coeficiente de Variação: {coeficiente_variacao:.2%}') 
         
 except Exception as e:
     print(f'Erro ao calcular as medidas de variabilidade: {e}')
